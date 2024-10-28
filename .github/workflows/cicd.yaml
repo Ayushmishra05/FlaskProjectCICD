@@ -19,7 +19,7 @@ jobs:
 
             - name: Pulling Docker images
               run: | 
-                docker run -d -p 8001:8001 --name flask-app-03 mishrrayush/learning-repo:fixed
+                docker run -d -p 8001:8001 --name flask-app-004 mishrrayush/learning-repo:fixed
     
     test2: 
         runs-on: self-hosted
@@ -28,7 +28,7 @@ jobs:
         steps:
             - name: Executing the container 
               run: | 
-                docker exec -it flask-app-03 /bin/bash
+                docker exec -it flask-app-004 /bin/bash
                 pytest test_app.py
                 exit 
               
