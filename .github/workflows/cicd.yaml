@@ -28,7 +28,7 @@ jobs:
         steps:
             - name: Executing the container 
               run: | 
-                docker exec -it flask-app 
+                docker exec -it flask-app /bin/bash
             - name: testing inside the container 
               run: | 
                 pytest test_app.py
