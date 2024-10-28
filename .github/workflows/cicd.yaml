@@ -17,16 +17,24 @@ jobs:
             - name: Checking out the code 
               uses : actions/checkout@v2
 
-            - name: Pushing Docker images 
-              run: | 
-                docker build . --tag mishrrayush/learning-repo:flaskapplatest
             - name: Pulling Docker images
               run: | 
-                docker run -p 5000:5000 --name flask-container mishrrayush/learning-repo:flaskapplatest 
-            - name: Executing the App 
+                docker run -d -p 8001:8001 --name flask-container mishrrayush/learning-repo:fixed
+    
+    test2: 
+        runs-on: self-hosted
+        needs: test
+
+        steps:
+            - name: Executing the container 
               run: | 
-               docker exec flask container
-               docker exec pytest test_app.py
+                docker exec -it flask-container 
+            - name: testing inside the container 
+              run: | 
+                pytest test_app.py
+            - name: Exit
+              run: exit 
+              
                
                
 
